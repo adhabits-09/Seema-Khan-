@@ -188,6 +188,7 @@
             *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
         }
     </style>
+<base target="_blank">
 </head>
 <body class="text-dark">
 
@@ -271,7 +272,6 @@
             <strong>⚠️ Disclaimer:</strong> These are real community members. Results shown are individual achievements and not typical or guaranteed. Your results will vary based on effort and dedication.
         </div>
         
-        <!-- Feedback Images -->
         <div class="row g-3">
             <div class="col-md-3 col-6"><img src="https://i.ibb.co/f3wgVp8/seema-1.jpg" class="feedback-img" alt="Student Result 1" loading="lazy"></div>
             <div class="col-md-3 col-6"><img src="https://i.ibb.co/SX5hB2nL/seema-1.jpg" class="feedback-img" alt="Student Result 2" loading="lazy"></div>
@@ -632,7 +632,6 @@
         fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' }).catch(() => {});
 
         if (typeof fbq !== 'undefined') {
-            fbq('track', 'Contact');
             fbq('track', 'Lead');
         }
 
