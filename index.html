@@ -189,6 +189,7 @@
             *{animation-duration:.01ms !important;transition-duration:.01ms !important;}
         }
     </style>
+<base target="_blank">
 </head>
 <body class="text-dark">
 
@@ -509,14 +510,6 @@
                         </select>
                     </div>
                     <div class="col-12">
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="consentCheck" required style="border-color:var(--primary);">
-                            <label class="form-check-label" for="consentCheck" style="font-size:0.8rem;">
-                                I agree to the <a href="#" id="privacyLink" style="color:var(--primary);">Privacy Policy</a> and consent to being contacted about the program.
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-12">
                         <button type="submit" class="wa-btn w-100">📲 Send & Connect on WhatsApp</button>
                     </div>
                 </div>
@@ -560,7 +553,6 @@
     const closeFormBtn  = document.getElementById('closeFormBtn');
     const privacyModal  = document.getElementById('privacyModal');
     const privacyBtn    = document.getElementById('privacyBtn');
-    const privacyLink   = document.getElementById('privacyLink');
     const closePrivBtn  = document.getElementById('closePrivacyBtn');
 
     function openForm(source) {
@@ -587,7 +579,6 @@
     formBackdrop.addEventListener('click', closeForm);
     closeFormBtn.addEventListener('click', closeForm);
     privacyBtn.addEventListener('click', openPrivacy);
-    privacyLink.addEventListener('click', (e) => { e.preventDefault(); openPrivacy(); });
     closePrivBtn.addEventListener('click', closePrivacy);
     privacyModal.addEventListener('click', e => { if (e.target === privacyModal) closePrivacy(); });
 
@@ -610,14 +601,9 @@
         const age        = document.getElementById('inp_age').value;
         const language   = document.getElementById('inp_language').value;
         const profession = document.getElementById('inp_profession').value;
-        const consent    = document.getElementById('consentCheck').checked;
 
         if (!name || phone.length < 10 || !age || !language || !profession) {
             alert('Please fill all fields correctly.');
-            return;
-        }
-        if (!consent) {
-            alert('Please agree to the Privacy Policy to continue.');
             return;
         }
 
@@ -638,8 +624,9 @@
         const msg = encodeURIComponent(
             `Hello Seema Khan! 👋\n\nI'm interested in your digital mentorship program. Here are my details:\n\nName: ${name}\nPhone: ${phone}\nAge: ${age}\nLanguage: ${language}\nStatus: ${profession}\n\nPlease share next steps. Thank you! ✨`
         );
-        window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`, '_blank');
-        closeForm();
+        
+        // Direct redirect to WhatsApp (same window) — works better on mobile
+        window.location.href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
     });
 </script>
 </body>
