@@ -190,6 +190,7 @@
         }
     </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body class="text-dark">
 
@@ -617,8 +618,9 @@
         formData.append('timestamp', new Date().toISOString());
         fetch(SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' }).catch(() => {});
 
+        /* ===== CONTACT EVENT (Faizeen jaisa) ===== */
         if (typeof fbq !== 'undefined') {
-            fbq('track', 'Lead');
+            fbq('track', 'Contact');
         }
 
         const msg = encodeURIComponent(
